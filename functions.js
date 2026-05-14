@@ -9,8 +9,15 @@ let randomPositionFromNumber = Math.floor(Math.random() * arr.length)  //náhodn
 return arr[randomPositionFromNumber]
 }
 
-// ======== ?????? ======
-//======================================================================
+// ======== Obecná funkce vypsání textu do HTML ======
+//====================================================
+let WriteThisToHTML = (what,parent) => {
+    let addPara = document.createElement("p")
+    addPara.innerHTML = `${what}`
+    document.querySelector(parent).appendChild(addPara)
+
+}
+
 
 
 

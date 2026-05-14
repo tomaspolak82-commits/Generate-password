@@ -29,29 +29,69 @@ let generateForm = document.querySelector("#generateForm")
 generateForm.addEventListener("submit", (event)=> {
   event.preventDefault()
     
-    // === generování hesla pouze z malých písmen - NIC NENÍ ZAŠKRTNUT ===
-    if (bigSmallCheckbox.checked === false &&
-      specialMarkCheckbox.checked === false &&
-      numberCheckbox.checked === false
-    ) {
-    let howLongPassword = event.target[3].value  // načtení dat z inputu délka hesla
+  // === generování hesla pouze z malých písmen - NIC NENÍ ZAŠKRTNUT ===
+  //====================================================================
+  if (bigSmallCheckbox.checked === false &&
+    specialMarkCheckbox.checked === false &&
+    numberCheckbox.checked === false
+  ) {
 
+    let howLongPassword = event.target[3].value  // načtení dat z inputu délka hesla
     writePassword = "" // vyčištění proměné po každém kliknutí
     divForPass.innerHTML = "" // vyčištění divu s heslem po každém kliknutí
 
     for (let i = 0; i<howLongPassword; i++ ) {
       writePassword += randomElementFromArray(arrSmallLetter)
-     
     }
-    }
+    WriteThisToHTML(writePassword,"#forGeneratePassword")  // Obecná funkce - vypsání do DIVU
+
+  }
+
+  // === generování hesla pouze s VELKÝMI písmeny - ZAŠKRTNUTA VELKÁ PÍSMENA ===
+  //============================================================================
+
+  else if (bigSmallCheckbox.checked === true &&
+    specialMarkCheckbox.checked === false &&
+    numberCheckbox.checked === false
+    ){
     
+    let howLongPassword = event.target[3].value  // načtení dat z inputu délka hesla
+    writePassword = "" // vyčištění proměné po každém kliknutí
+    divForPass.innerHTML = "" // vyčištění divu s heslem po každém kliknutí
 
-    // === vypsání hesla do divu 
-    let addPara = document.createElement("p")
-    addPara.innerHTML = `${writePassword}`
-    document.querySelector("#forGeneratePassword").appendChild(addPara)
 
-    event.target[3].value = ""  //vyčíštění inputu po všech úkonech
+    // heslo musí mít minimálně 2 znaky (malé a velké písmino)
+    if (howLongPassword<2){ 
+      
+      let warning = "Heslo musí mít víc než 1 znak!!!"
+      WriteThisToHTML (warning,"#forGeneratePassword")
+    }else {
+  
+    // === generování hesla 
+    let numOfRepeatForSmall = howLongPassword - 1
+          
+    for (let i = 0; i<howLongPassword; i++ ) {
+      writePassword += randomElementFromArray(arrSmallLetter)
+    }
+    WriteThisToHTML(writePassword,"#forGeneratePassword")  // Obecná funkce - vypsání do DIVU
+    }
+
+
+
+
+
+
+  }
+  
+
+  // === vypsání hesla do divu, přes obecnou funkci (co má vypsat - proměná, "#ID rodiče")
+   
+
+
+  event.target[3].value = ""  //vyčíštění inputu po všech úkonech
+  bigSmallCheckbox.checked = false  //odškrtnutí checkboxů po všech úkonech
+  specialMarkCheckbox.checked = false
+  numberCheckbox.checked = false  
 
     
 })
