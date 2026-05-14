@@ -18,7 +18,8 @@ let arrNumber = ["0","1","2","3","4","5","6","7","8","9"]
 //====== prázdné proměné pro akci eventu ======
 // ============================================
 
-let writePassword = ""
+let writePassword = ""  //pro psaní malých písmen
+let writePasswordWithBig = "" //pro psaní malých, velkých písmen
 
 
 
@@ -43,7 +44,7 @@ generateForm.addEventListener("submit", (event)=> {
     for (let i = 0; i<howLongPassword; i++ ) {
       writePassword += randomElementFromArray(arrSmallLetter)
     }
-    WriteThisToHTML(writePassword,"#forGeneratePassword")  // Obecná funkce - vypsání do DIVU
+    WriteThisToHTML(writePassword,"#forGeneratePassword")   // === vypsání hesla do divu, přes obecnou funkci (co má vypsat - proměná, "#ID rodiče")
 
   }
 
@@ -63,17 +64,25 @@ generateForm.addEventListener("submit", (event)=> {
     // heslo musí mít minimálně 2 znaky (malé a velké písmino)
     if (howLongPassword<2){ 
       
-      let warning = "Heslo musí mít víc než 1 znak!!!"
+      let warning = "Pokud má heslo obsahovat malá a velká písmena, musí mít víc než 1 znak!!!"
       WriteThisToHTML (warning,"#forGeneratePassword")
-    }else {
+    }else { // pokud má víc než 2 znaky 
   
-    // === generování hesla 
-    let numOfRepeatForSmall = howLongPassword - 1
+    // === generování hesla s 1 velkým písmenem
+    let numOfRepeatForSmall = howLongPassword - 1 //délka hesla-1 (jedno bude velké písmeno!!)
           
-    for (let i = 0; i<howLongPassword; i++ ) {
-      writePassword += randomElementFromArray(arrSmallLetter)
+    for (let i = 0; i<numOfRepeatForSmall; i++ ) {
+      writePassword += randomElementFromArray(arrSmallLetter)  //vytvoří heslo s malými písmeny
     }
-    WriteThisToHTML(writePassword,"#forGeneratePassword")  // Obecná funkce - vypsání do DIVU
+
+    let oneBigLetter = randomElementFromArray(arrBigLetter) // generované 1 velké písmeno
+
+    writePasswordWithBig = writePassword + oneBigLetter // spojení hesla malých písmen a jednoho velkého
+
+    
+
+
+    WriteThisToHTML(writePasswordWithBig,"#forGeneratePassword")  
     }
 
 
