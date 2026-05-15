@@ -28,6 +28,9 @@ let writePasswordWithBig = "" //pro psaní malých, velkých písmen
 let generateForm = document.querySelector("#generateForm")
 generateForm.addEventListener("submit", (event)=> {
   event.preventDefault()
+
+  writePassword = "" // vyčištění proměné po každém kliknutí
+  divForPass.innerHTML = "" // vyčištění divu s heslem po každém kliknutí
     
   // === generování hesla pouze z malých písmen - NIC NENÍ ZAŠKRTNUT ===
   //====================================================================
@@ -37,9 +40,7 @@ generateForm.addEventListener("submit", (event)=> {
   ) {
 
     let howLongPassword = event.target[3].value  // načtení dat z inputu délka hesla
-    writePassword = "" // vyčištění proměné po každém kliknutí
-    divForPass.innerHTML = "" // vyčištění divu s heslem po každém kliknutí
-
+   
     for (let i = 0; i<howLongPassword; i++ ) {
       writePassword += randomElementFromArray(arrSmallLetter)
     }
@@ -56,10 +57,7 @@ generateForm.addEventListener("submit", (event)=> {
     ){
     
     let howLongPassword = event.target[3].value  // načtení dat z inputu délka hesla
-    writePassword = "" // vyčištění proměné po každém kliknutí
-    divForPass.innerHTML = "" // vyčištění divu s heslem po každém kliknutí
-
-
+    
     // heslo musí mít minimálně 2 znaky (malé a velké písmino)
     if (howLongPassword<2){ 
       
@@ -85,13 +83,85 @@ generateForm.addEventListener("submit", (event)=> {
 
     WriteThisToHTML(randomPasswordWithBig,"#forGeneratePassword")  
     }
-
-
-
-
-
-
   }
+
+  // === generování hesla s 1 speciálním znakem - ZAŠKRTNUTY SPECIÁLNÍ ZNAKY ===
+  //============================================================================
+
+  else if (bigSmallCheckbox.checked === false &&
+    specialMarkCheckbox.checked === true &&
+    numberCheckbox.checked === false
+    ){
+    
+    let howLongPassword = event.target[3].value  // načtení dat z inputu délka hesla
+    
+    // heslo musí mít minimálně 2 znaky (malé a speciální znak)
+    if (howLongPassword<2){ 
+      
+      let warning = "Pokud má heslo obsahovat malá písmena a znak, musí mít víc než 1 znak!!!"
+      WriteThisToHTML (warning,"#forGeneratePassword")
+    }else { // pokud má víc než 2 znaky 
+  
+    // === generování hesla s 1 velkým písmenem
+    let numOfRepeatForSmall = howLongPassword - 1 //délka hesla-1 (jedno bude velké písmeno!!)
+          
+    for (let i = 0; i<numOfRepeatForSmall; i++ ) {
+      writePassword += randomElementFromArray(arrSmallLetter)  //vytvoří heslo s malými písmeny
+    }
+
+    let specialMark = randomElementFromArray(arrSpecialMark) // generované 1 speciální znak
+
+    writePasswordWithBig = writePassword + specialMark // spojení hesla malých písmen a znaku
+    let writePasswordWithBigToArr = writePasswordWithBig.split("") //rozdělení hesla do pole pro zamíchání
+
+     let randomPasswordWithBig = (writePasswordWithBigToArr.sort(() => Math.random() - 0.5)).join("") //zamíchání pole s heslem a spojení do stringu
+
+    WriteThisToHTML(randomPasswordWithBig,"#forGeneratePassword")  
+    }
+  }
+
+  // === generování hesla s číslem - ZAŠKRTNUTY SPECIÁLNÍ ZNAKY ===
+  //============================================================================
+
+  else if (bigSmallCheckbox.checked === false &&
+    specialMarkCheckbox.checked === false &&
+    numberCheckbox.checked === true
+    ){
+    
+    let howLongPassword = event.target[3].value  // načtení dat z inputu délka hesla
+    
+    // heslo musí mít minimálně 2 znaky (malé a speciální znak)
+    if (howLongPassword<2){ 
+      
+      let warning = "Pokud má heslo obsahovat malá písmena a číslo, musí mít víc než 1 znak!!!"
+      WriteThisToHTML (warning,"#forGeneratePassword")
+    }else { // pokud má víc než 2 znaky 
+  
+    // === generování hesla s 1 velkým písmenem
+    let numOfRepeatForSmall = howLongPassword - 1 //délka hesla-1 (jedno bude velké písmeno!!)
+          
+    for (let i = 0; i<numOfRepeatForSmall; i++ ) {
+      writePassword += randomElementFromArray(arrSmallLetter)  //vytvoří heslo s malými písmeny
+    }
+
+    let num = randomElementFromArray(arrNumber) // generované 1 speciální znak
+
+    writePasswordWithBig = writePassword + num // spojení hesla malých písmen a znaku
+    let writePasswordWithBigToArr = writePasswordWithBig.split("") //rozdělení hesla do pole pro zamíchání
+
+     let randomPasswordWithBig = (writePasswordWithBigToArr.sort(() => Math.random() - 0.5)).join("") //zamíchání pole s heslem a spojení do stringu
+
+    WriteThisToHTML(randomPasswordWithBig,"#forGeneratePassword")  
+    }
+  }
+
+
+
+
+
+
+
+
   
 
   // === vypsání hesla do divu, přes obecnou funkci (co má vypsat - proměná, "#ID rodiče")
