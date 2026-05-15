@@ -18,6 +18,10 @@ let WriteThisToHTML = (what,parent) => {
 
 }
 
+// ====== Zamýchání pole =======
+//==============================
+
+
 
 
 

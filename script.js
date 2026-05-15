@@ -22,7 +22,6 @@ let writePassword = ""  //pro psaní malých písmen
 let writePasswordWithBig = "" //pro psaní malých, velkých písmen
 
 
-
 // ====== akce po kliknutí na tlačítko "Vytvořit heslo" ======
 // ===========================================================
 
@@ -79,10 +78,12 @@ generateForm.addEventListener("submit", (event)=> {
 
     writePasswordWithBig = writePassword + oneBigLetter // spojení hesla malých písmen a jednoho velkého
 
-    
+    let writePasswordWithBigToArr = writePasswordWithBig.split("") //rozdělení hesla s velkým písmenem do pole pro zamíchání
+
+     let randomPasswordWithBig = (writePasswordWithBigToArr.sort(() => Math.random() - 0.5)).join("") //zamíchání pole s heslem a spojení do stringu
 
 
-    WriteThisToHTML(writePasswordWithBig,"#forGeneratePassword")  
+    WriteThisToHTML(randomPasswordWithBig,"#forGeneratePassword")  
     }
 
 
