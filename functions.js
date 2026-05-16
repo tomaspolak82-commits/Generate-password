@@ -21,6 +21,14 @@ let WriteThisToHTML = (what,parent) => {
 // ====== Zamíchání pole =======
 //==============================
 
+let mixPassword = (password)=>{ 
+   
+    const stepOne = password.split("") // rozdělení hesla na pole písmen
+    const stepTwo = stepOne.sort(()=>0.5-Math.random())  // zamýchání pole
+    const stepThree = stepTwo.join("")
+
+    return stepThree
+}
 
 
 
