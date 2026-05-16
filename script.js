@@ -86,30 +86,7 @@ generateForm.addEventListener("submit", (event)=> {
 
   WriteThisToHTML(PasswordAfterSort,"#forGeneratePassword")   // === vypsání hesla do divu, přes obecnou funkci (co má vypsat - proměná, "#ID rodiče")  
   }
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-    
-
-
+   
   event.target[3].value = ""  //vyčíštění inputu po všech úkonech
   bigSmallCheckbox.checked = false  //odškrtnutí checkboxů po všech úkonech
   specialMarkCheckbox.checked = false
@@ -117,8 +94,6 @@ generateForm.addEventListener("submit", (event)=> {
 
     
 })
-
-// ======= test 
 
 
 

@@ -32,9 +32,3 @@ let mixPassword = (password)=>{
 
 
 
-
-
-// setInterval(() => {
-//     console.log (generateNum(arrNumber))
-// }, 1000); 
-
