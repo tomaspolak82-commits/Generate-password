@@ -84,8 +84,10 @@ generateForm.addEventListener("submit", (event)=> {
   writePassword += basicPassword + advancePassword
   PasswordAfterSort= mixPassword(writePassword)
 
-  WriteThisToHTML(PasswordAfterSort,"#forGeneratePassword")   // === vypsání hesla do divu, přes obecnou funkci (co má vypsat - proměná, "#ID rodiče")  
+  WriteThisToHTML(PasswordAfterSort,"#forGeneratePassword")   // === vypsání hesla do divu, přes obecnou funkci (co má vypsat - proměná, "#ID rodiče") a vytvoření tlačítka pro zkopírování hesla do schránky   
   }
+
+
    
   event.target[3].value = ""  //vyčíštění inputu po všech úkonech
   bigSmallCheckbox.checked = false  //odškrtnutí checkboxů po všech úkonech

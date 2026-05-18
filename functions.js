@@ -15,6 +15,14 @@ let WriteThisToHTML = (what,parent) => {
     let addPara = document.createElement("p")
     addPara.innerHTML = `${what}`
     document.querySelector(parent).appendChild(addPara)
+        //vytvoření kopírovacího tlačítka
+    let buttonForCopy = document.createElement("button")
+    buttonForCopy.innerHTML = "Zkopírovat"
+    document.querySelector(parent).appendChild(buttonForCopy)
+        // zkopírování hesla do schránky
+    buttonForCopy.addEventListener("click", () => {
+        navigator.clipboard.writeText(what)
+    })
 
 }
 
