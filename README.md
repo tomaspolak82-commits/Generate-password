@@ -1,5 +1,7 @@
 # Generátor hesel
 
+**Součástí projektu je QA dokumentace** – [test cases](./testing/test-cases.md), [nalezené bugy](./testing/bug-reports.md) a [testovací flow diagram](./testing/README.md)
+
 Jednoduchá webová aplikace pro generování náhodných hesel. Projekt jsem vytvořil v rámci procvičování základu JavaScriptu, práce s DOMem a HTML/CSS.
 
 ## Co aplikace umí
