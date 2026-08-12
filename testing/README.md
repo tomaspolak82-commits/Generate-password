@@ -13,7 +13,7 @@ Manuální testování aplikace [Generate-password](https://tomaspolak82-commits
 
 Diagram zachycuje testovaný flow aplikace včetně prvního nalezeného bugu (prázdné pole u délky hesla obchází validaci).
 
-![Test flow diagram](./Generate-password-flow.jpg)
+![Test flow diagram](./generate-password-flow.jpg)
 
 ## Test cases
 
